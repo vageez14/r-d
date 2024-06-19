@@ -12,11 +12,12 @@
             if (currentSrc) {
                 try {
                     return new URL(currentSrc).origin;
-                } catch (error) {
-                    return window.location.origin;
+                } finally {
+                    // do nothing
+                    // we return the default value set in the reduce function
                 }
             }
-        }, undefined);
+        }, window.location.origin);
 
     console.log("MAIN", basePath);
 })();
