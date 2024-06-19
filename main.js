@@ -13,8 +13,11 @@
                 try {
                     return new URL(currentSrc).origin;
                 } finally {
-                    // do nothing
-                    // we return the default value set in the reduce function
+                    /**
+                     * Not a valid URL
+                     * This means we are using a relative path
+                     * We return the default window.location.origin set in the reduce function
+                     */
                 }
             }
         }, window.location.origin);
