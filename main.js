@@ -8,5 +8,5 @@
         .filter(src => src.includes(scriptSrcPathName))
         .reduce((loaderSrc, currentSrc) => currentSrc ? new URL(currentSrc).origin : undefined, undefined);
 
-    console.log(basePath);
+    console.log("MAIN", basePath);
 })();
