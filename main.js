@@ -6,7 +6,15 @@
         .map(tag => console.log(tag) || tag.src)
         .map(tag => tag.src)
         .filter(src => src.includes(scriptSrcPathName))
-        .reduce((loaderSrc, currentSrc) => currentSrc ? new URL(currentSrc).origin : undefined, undefined);
+        .reduce((loaderSrc, currentSrc) => {
+            if (currentSrc) {
+                try {
+                    return new URL(currentSrc).origin;
+                } catch (error) {
+                    return window.location.origin;
+                }
+            }
+        }, undefined);
 
     console.log("MAIN", basePath);
 })();
