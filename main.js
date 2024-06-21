@@ -12,12 +12,8 @@
             if (currentSrc) {
                 try {
                     return new URL(currentSrc).origin;
-                } finally {
-                    /**
-                     * Not a valid URL
-                     * This means we are using a relative path
-                     * We return the default window.location.origin set in the reduce function
-                     */
+                } catch (_) {
+                    return loaderSrc;
                 }
             }
         }, window.location.origin);
