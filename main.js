@@ -18,5 +18,17 @@
             }
         }, window.location.origin);
 
+    /** JAVASCRIPT */
+    const jsdeps = [
+        `${basePath}/utils.js`
+    ];
+
+    jsdeps.forEach(dep => {
+        const script = document.createElement("script");
+        script.src = dep;
+        script.onload = () => {};
+        script.onerror = () => {};
+        document.head.appendChild(script);
+    });
     console.log("MAIN", basePath);
 })();
