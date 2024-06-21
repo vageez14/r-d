@@ -1,6 +1,5 @@
 (() => {
-    const scriptSrc = new URL(document.currentScript.src);
-    const scriptSrcPathName = scriptSrc.pathname;
+    const scriptSrcPathName = new URL(document.currentScript.src).pathname;
     const scriptTags = Array.from(document.getElementsByTagName("script")) ?? [];
     const basePath = scriptTags
         .map(tag => {
