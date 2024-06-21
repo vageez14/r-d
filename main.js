@@ -1,22 +1,23 @@
 (() => {
-    const scriptSrcPathName = new URL(document.currentScript.src).pathname;
-    const scriptTags = Array.from(document.getElementsByTagName("script")) ?? [];
-    const basePath = scriptTags
-        .map(tag => {
-            console.log(tag.src);
-            return tag.src;
-        })
-        .filter(src => src.includes(scriptSrcPathName))
-        .reduce((loaderSrc, currentSrc) => {
-            if (currentSrc) {
-                try {
-                    return new URL(currentSrc).origin;
-                } catch (_) {
-                    return loaderSrc;
-                }
-            }
-        }, window.location.origin);
-
+    // const scriptSrcPathName = new URL(document.currentScript.src).pathname;
+    // const scriptTags = Array.from(document.getElementsByTagName("script")) ?? [];
+    // const basePath = scriptTags
+    //     .map(tag => {
+    //         console.log(tag.src);
+    //         return tag.src;
+    //     })
+    //     .filter(src => src.includes(scriptSrcPathName))
+    //     .reduce((loaderSrc, currentSrc) => {
+    //         if (currentSrc) {
+    //             try {
+    //                 return new URL(currentSrc).origin;
+    //             } catch (_) {
+    //                 return loaderSrc;
+    //             }
+    //         }
+    //     }, window.location.origin);
+    
+    const basePath = new URL(document.currentScript.src).origin;
     /** JAVASCRIPT */
     const jsdeps = [
         `${basePath}/utils.js`
